@@ -20,10 +20,14 @@ const Contacts = async ({
   const totalPages = await getContactPages(query);
 
   return (
-    <div className="max-w-screen-md mx-auto mt-5">
-      <div className="flex items-center justify-between gap-1 mb-5">
-        <Search />
-        <CreateButton />
+    <div className="max-w-screen-md mx-auto mt-5 p-5 bg-white rounded-lg shadow-lg">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 mb-5">
+        <div className="md:w-1/2">
+          <Search />
+        </div>
+        <div className="md:w-1/2 flex justify-end">
+          <CreateButton />
+        </div>
       </div>
       <Suspense key={query + currentPage} fallback={<TableSkeleton />}>
         <ContactTable query={query} currentPage={currentPage} />
